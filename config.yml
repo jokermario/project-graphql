@@ -1,0 +1,44 @@
+spectaql:
+  logoFile: ./test/fixtures/logo.png
+  faviconFile: ./test/fixtures/favicon.png
+  displayAllServers: true
+
+introspection:
+  removeTrailingPeriodFromDescriptions: false
+  schemaFile: ./src/schema.gql
+  metadataFile: ./introspectionSchema.json
+  #  dynamicExamplesProcessingModule: ./examples/customizations/examples
+  queryNameStrategy: capitalizeFirst
+  fieldExpansionDepth: 2
+
+  spectaqlDirective:
+    enable: true
+
+extensions:
+  graphqlScalarExamples: true
+
+info:
+  title: Earnipay GraphQL Test API Reference
+  description: Thank you for seeing this!
+#  termsOfService: https://www.example.com/terms
+  contact:
+    name: API Support
+#    url: http://www.example.com/support
+    email: nwachukwufavour017@gmail.com
+#  license:
+#    name: Apache 2.0
+#    url: https://www.apache.org/licenses/LICENSE-2.0.html
+#  x-introItems:
+#    - title: Important thing 1
+#      description: Some important stuff we wanted you to know. Supports `markdown`
+
+servers:
+  - url: http://localhost:3000/graphql
+    description: Staging
+#  - url: https://example.com/graphql
+#    description: Production
+#    production: true
+    headers:
+      - name: Authorization
+        example: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImZhdm91ckBlYXJuaXBheS5jb20iLCJpYXQiOjE2OTEyNzE1MDd9.VxQsqiB856BTnoYhwYIw7HN2-24YNN-IhgPNHL40oWM
+#        comment: Your foo from bar

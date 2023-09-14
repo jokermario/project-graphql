@@ -1,0 +1,1295 @@
+{
+	"info": {
+		"_postman_id": "b48ed41b-3e97-49af-81fa-6d92e98c5c8d",
+		"name": "Earnipay Test GraphQL",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Queries",
+			"item": [
+				{
+					"name": "Auth",
+					"item": [
+						{
+							"name": "login",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var res = JSON.parse(responseBody);",
+											"pm.globals.set('access_token', res.data.token)"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "graphql",
+									"graphql": {
+										"query": "query login($_email: String!, $_password: String!) {\n  token(_email: $_email, _password: $_password)\n}",
+										"variables": "{\n  \"_email\": \"favour@test.com\",\n  \"_password\": \"testing\"\n}"
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/graphql",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"graphql"
+									]
+								},
+								"description": "This endpoint lets a user authenticate with the graphQL server.\n\n**Sample Usage**\n\n**Variables**\n\n``` json\n{\n  \"_email\": \"favour@test.com\",\n  \"_password\": \"testing\"\n}\n\n```\n\n**Sample Response**\n\n``` json\n{\n  \"data\": {\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImZhdm91ckBlYXJuaXBheS5jb20iLCJpYXQiOjE2OTEyOTg2OTQsImV4cCI6MTY5MTI5ODc1NH0.L4xD9q5UEW7x-gXF6xmpsD9aKXw97PjcCwG4VIi0gB4\"\n  }\n}\n\n```"
+							},
+							"response": [
+								{
+									"name": "(SUCCESS) login",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "graphql",
+											"graphql": {
+												"query": "query login($_email: String!, $_password: String!) {\n  token(_email: $_email, _password: $_password)\n}",
+												"variables": "{\n  \"_email\": \"favour@test.com\",\n  \"_password\": \"testing\"\n}"
+											}
+										},
+										"url": {
+											"raw": "http://localhost:3000/graphql",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"graphql"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "cache-control",
+											"value": "no-store"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "185"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"b9-IiH+L5DDOuVahOKqmp07oyHOZdI\""
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 06 Aug 2023 14:52:19 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"data\": {\n        \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImZhdm91ckB0ZXN0LmNvbSIsImlhdCI6MTY5MTMzMzUzOSwiZXhwIjoxNjkxMzMzODM5fQ.M0KdoRtTgpRzKyILLpAbjafmnecJK_sYef-yGCMzsUM\"\n    }\n}"
+								},
+								{
+									"name": "(ERROR) login",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "graphql",
+											"graphql": {
+												"query": "query login($_email: String!, $_password: String!) {\n  token(_email: $_email, _password: $_password)\n}",
+												"variables": "{\n  \"_email\": \"favour@testq.com\",\n  \"_password\": \"testing\"\n}"
+											}
+										},
+										"url": {
+											"raw": "http://localhost:3000/graphql",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"graphql"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "cache-control",
+											"value": "no-store"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "122"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"7a-dCjGIB2AkKKZBg2ySE0UMmxbjQw\""
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 06 Aug 2023 15:00:39 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"errors\": [\n        {\n            \"extensions\": {},\n            \"locations\": [\n                {\n                    \"line\": 2,\n                    \"column\": 3\n                }\n            ],\n            \"message\": \"No User found\",\n            \"path\": [\n                \"token\"\n            ]\n        }\n    ],\n    \"data\": null\n}"
+								}
+							]
+						}
+					],
+					"description": "This folder contains all endpoints relevant to authentication"
+				},
+				{
+					"name": "findAllTodoItems",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query findAllTodoItems($cursor: Int, $take: Int!) {\n  findAllTodoItems(cursor: $cursor, take: $take) {\n    __typename\n    id\n    title # The title of the todo\n    description # What the todo is all about\n    completed # Used to determine if a todo has been achieved or not\n    createdAt\n    updatedAt\n  }\n}",
+								"variables": "{\n\t\"cursor\": 1,\n\t\"take\": 2\n}"
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/graphql",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"graphql"
+							]
+						},
+						"description": "The endpoint is responsible for returning all created todos. This endpoint supports the cursor pagination mechanism.\n\n**Note:** **Authentication is required**\n\n## **Sample Usage**\n\n1. If no variable is set the endpoint returns only the first 5 items.\n2. if the cursor and take variables are provided. It paginates\n    \n\n**Variables**\n\n``` json\n{\n  \"cursor\": 1,\n  \"take\": 2\n}\n\n ```\n\nThis starts from the first item and returns only two items.\n\n**Sample Response**\n\n``` json\n{\n  \"data\": {\n    \"findAllTodoItems\": [\n      {\n        \"__typename\": \"Todo\",\n        \"id\": 2,\n        \"title\": \"Go to the market. Date: 1691267269673\",\n        \"description\": \"\",\n        \"completed\": false,\n        \"createdAt\": \"2023-08-05T20:16:50.000Z\",\n        \"updatedAt\": \"2023-08-05T20:16:50.000Z\"\n      },\n      {\n        \"__typename\": \"Todo\",\n        \"id\": 3,\n        \"title\": \"Buy a Car. Date: 1691267269673\",\n        \"description\": \"The make should be ...\",\n        \"completed\": false,\n        \"createdAt\": \"2023-08-05T20:16:50.000Z\",\n        \"updatedAt\": \"2023-08-05T20:16:50.000Z\"\n      }\n    ]\n  }\n}\n\n ```\n\n**Sample Error Response (If not authenticated)**\n\n``` json\n{\n  \"errors\": [\n    {\n      \"extensions\": {\n        \"originalError\": {\n          \"statusCode\": 401,\n          \"message\": \"Invalid token\",\n          \"error\": \"Unauthorized\"\n        }\n      },\n      \"locations\": [\n        {\n          \"line\": 2,\n          \"column\": 3\n        }\n      ],\n      \"message\": \"Invalid token\",\n      \"path\": [\n        \"findAllTodoItems\"\n      ]\n    }\n  ],\n  \"data\": null\n}\n\n ```"
+					},
+					"response": [
+						{
+							"name": "(SUCCESS) findAllTodoItems",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "graphql",
+									"graphql": {
+										"query": "query findAllTodoItems($cursor: Float, $take: Float!) {\n  findAllTodoItems(cursor: $cursor, take: $take) {\n    __typename\n    id\n    title # The title of the todo\n    description # What the todo is all about\n    completed # Used to determine if a todo has been achieved or not\n    createdAt\n    updatedAt\n  }\n}",
+										"variables": "{\n\t\"cursor\": 1,\n\t\"take\": 2\n}"
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/graphql",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"graphql"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "cache-control",
+									"value": "no-store"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "427"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1ab-O7Hmy19RBYSN4M6TRXWJQShiNrc\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 06 Aug 2023 07:33:07 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"findAllTodoItems\": [\n            {\n                \"__typename\": \"Todo\",\n                \"id\": 2,\n                \"title\": \"Go to the market. Date: 1691306948109\",\n                \"description\": \"\",\n                \"completed\": false,\n                \"createdAt\": \"2023-08-05T15:16:50.000Z\",\n                \"updatedAt\": \"2023-08-05T15:16:50.000Z\"\n            },\n            {\n                \"__typename\": \"Todo\",\n                \"id\": 3,\n                \"title\": \"Buy a Car. Date: 1691306948109\",\n                \"description\": \"The make should be ...\",\n                \"completed\": false,\n                \"createdAt\": \"2023-08-05T15:16:50.000Z\",\n                \"updatedAt\": \"2023-08-05T15:16:50.000Z\"\n            }\n        ]\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "findTodoById",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query findTodoById($id: Int!) {\n  findTodoById(id: $id) {\n    __typename\n    id\n    title # The title of the todo\n    description # What the todo is all about\n    completed # Used to determine if a todo has been achieved or not\n    createdAt\n    updatedAt\n  }\n}",
+								"variables": "{\n\t\"id\": 1\n}"
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/graphql",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"graphql"
+							]
+						},
+						"description": "This endpoint returns a todo that corresponds to ID which you used to make the request.\n\n**Note:** **Authentication is required**\n\n## **Sample Usage**\n\n**Variables**\n\n``` json\n{\n  \"id\": 1\n}\n\n ```\n\n**Sample Response**\n\n``` json\n{\n  \"data\": {\n    \"findTodoById\": {\n      \"__typename\": \"Todo\",\n      \"id\": 1,\n      \"title\": \"Take the car to the mechanic. Date: 1691267269673\",\n      \"description\": \"Service list\",\n      \"completed\": true,\n      \"createdAt\": \"2023-08-05T20:16:50.000Z\",\n      \"updatedAt\": \"2023-08-05T20:16:50.000Z\"\n    }\n  }\n}\n\n ```\n\n**Sample Error Response (if id does not exist)**\n\n``` json\n{\n  \"errors\": [\n    {\n      \"extensions\": {\n        \"originalError\": {\n          \"statusCode\": 404,\n          \"message\": \"The todo with id: 92 does not exist\",\n          \"error\": \"Not Found\"\n        }\n      },\n      \"locations\": [\n        {\n          \"line\": 2,\n          \"column\": 3\n        }\n      ],\n      \"message\": \"The todo with id: 92 does not exist\",\n      \"path\": [\n        \"findTodoById\"\n      ]\n    }\n  ],\n  \"data\": null\n}\n\n ```\n\n**Sample Error Response (If not authenticated)**\n\n``` json\n{\n  \"errors\": [\n    {\n      \"extensions\": {\n        \"originalError\": {\n          \"statusCode\": 401,\n          \"message\": \"Invalid token\",\n          \"error\": \"Unauthorized\"\n        }\n      },\n      \"locations\": [\n        {\n          \"line\": 2,\n          \"column\": 3\n        }\n      ],\n      \"message\": \"Invalid token\",\n      \"path\": [\n        \"findTodoById\"\n      ]\n    }\n  ],\n  \"data\": null\n}\n\n ```"
+					},
+					"response": [
+						{
+							"name": "(SUCCESS) findTodoById",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "graphql",
+									"graphql": {
+										"query": "query findTodoById($id: Int!) {\n  findTodoById(id: $id) {\n    __typename\n    id\n    title # The title of the todo\n    description # What the todo is all about\n    completed # Used to determine if a todo has been achieved or not\n    createdAt\n    updatedAt\n  }\n}",
+										"variables": "{\n\t\"id\": 1\n}"
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/graphql",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"graphql"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "cache-control",
+									"value": "no-store"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "239"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"ef-a45vFWJnZhgoxRQiCRdLqnVMKac\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 06 Aug 2023 07:34:15 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"findTodoById\": {\n            \"__typename\": \"Todo\",\n            \"id\": 1,\n            \"title\": \"Take the car to the mechanic. Date: 1691306948109\",\n            \"description\": \"Service list\",\n            \"completed\": true,\n            \"createdAt\": \"2023-08-05T15:16:50.000Z\",\n            \"updatedAt\": \"2023-08-05T15:16:50.000Z\"\n        }\n    }\n}"
+						},
+						{
+							"name": "(ERROR) findTodoById",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "graphql",
+									"graphql": {
+										"query": "query findTodoById($id: Int!) {\n  findTodoById(id: $id) {\n    __typename\n    id\n    title # The title of the todo\n    description # What the todo is all about\n    completed # Used to determine if a todo has been achieved or not\n    createdAt\n    updatedAt\n  }\n}",
+										"variables": "{\n\t\"id\": 100\n}"
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/graphql",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"graphql"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "cache-control",
+									"value": "no-store"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "255"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"ff-H/gV2WVFqWmQnDqe8TsmfGoFOZo\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 06 Aug 2023 07:43:08 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"errors\": [\n        {\n            \"extensions\": {\n                \"originalError\": {\n                    \"statusCode\": 404,\n                    \"message\": \"The todo with id: 100 does not exist\",\n                    \"error\": \"Not Found\"\n                }\n            },\n            \"locations\": [\n                {\n                    \"line\": 2,\n                    \"column\": 3\n                }\n            ],\n            \"message\": \"The todo with id: 100 does not exist\",\n            \"path\": [\n                \"findTodoById\"\n            ]\n        }\n    ],\n    \"data\": null\n}"
+						}
+					]
+				},
+				{
+					"name": "searchTodosByTitleOrDescription",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query searchTodosByTitleOrDescription($input: TodoSearchInput!) {\n  searchTodosByTitleOrDescription(input: $input) {\n    __typename\n    id\n    title # The title of the todo\n    description # What the todo is all about\n    completed # Used to determine if a todo has been achieved or not\n    createdAt\n    updatedAt\n  }\n}",
+								"variables": "{\n  \"input\": {\n    \"title\": \"Buy a car\",\n    \"description\": \"The make\"\n  }\n}"
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/graphql",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"graphql"
+							]
+						},
+						"description": "This endpoint enables a full-text search for todos. You can search for todos by title or description or both.\n\n**Note:** **Authentication is required**\n\n## **Sample Usage**\n\nsearching with both  \n**Variables**\n\n``` json\n{\n  \"input\": {\n    \"title\": \"Buy a car\",\n    \"description\": \"Service list\"\n  }\n}\n\n ```\n\n**Sample Response**\n\n``` json\n{\n  \"data\": {\n    \"searchTodosByTitleOrDescription\": [\n      {\n        \"__typename\": \"Todo\",\n        \"id\": 1,\n        \"title\": \"Take the car to the mechanic. Date: 1691267269673\",\n        \"description\": \"Service list\",\n        \"completed\": true,\n        \"createdAt\": \"2021-09-21T20:16:50.000Z\",\n        \"updatedAt\": \"2021-09-21T20:16:50.000Z\"\n      },\n      {\n        \"__typename\": \"Todo\",\n        \"id\": 3,\n        \"title\": \"Buy a Car. Date: 1691267269673\",\n        \"description\": \"The make should be ...\",\n        \"completed\": false,\n        \"createdAt\": \"2021-09-21T20:16:50.000Z\",\n        \"updatedAt\": \"2021-09-21T20:16:50.000Z\"\n      }\n    ]\n  }\n}\n\n ```\n\n**Sample Error Response (If not authenticated)**\n\n``` json\n{\n  \"errors\": [\n    {\n      \"extensions\": {\n        \"originalError\": {\n          \"statusCode\": 401,\n          \"message\": \"Invalid token\",\n          \"error\": \"Unauthorized\"\n        }\n      },\n      \"locations\": [\n        {\n          \"line\": 2,\n          \"column\": 3\n        }\n      ],\n      \"message\": \"Invalid token\",\n      \"path\": [\n        \"searchTodosByTitleOrDescription\"\n      ]\n    }\n  ],\n  \"data\": null\n}\n\n ```"
+					},
+					"response": [
+						{
+							"name": "(SUCCESS) searchTodosByTitleOrDescription",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "graphql",
+									"graphql": {
+										"query": "query searchTodosByTitleOrDescription($input: TodoSearchInput!) {\n  searchTodosByTitleOrDescription(input: $input) {\n    __typename\n    id\n    title # The title of the todo\n    description # What the todo is all about\n    completed # Used to determine if a todo has been achieved or not\n    createdAt\n    updatedAt\n  }\n}",
+										"variables": "{\n  \"input\": {\n    \"title\": \"Buy a car\",\n    \"description\": \"Service list\"\n  }\n}"
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/graphql",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"graphql"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "cache-control",
+									"value": "no-store"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "465"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1d1-TgO3kVybHoayy7iFyqZGDGyXm2M\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 06 Aug 2023 07:35:49 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"searchTodosByTitleOrDescription\": [\n            {\n                \"__typename\": \"Todo\",\n                \"id\": 1,\n                \"title\": \"Take the car to the mechanic. Date: 1691306948109\",\n                \"description\": \"Service list\",\n                \"completed\": true,\n                \"createdAt\": \"2023-08-05T15:16:50.000Z\",\n                \"updatedAt\": \"2023-08-05T15:16:50.000Z\"\n            },\n            {\n                \"__typename\": \"Todo\",\n                \"id\": 3,\n                \"title\": \"Buy a Car. Date: 1691306948109\",\n                \"description\": \"The make should be ...\",\n                \"completed\": false,\n                \"createdAt\": \"2023-08-05T15:16:50.000Z\",\n                \"updatedAt\": \"2023-08-05T15:16:50.000Z\"\n            }\n        ]\n    }\n}"
+						},
+						{
+							"name": "(ERROR) searchTodosByTitleOrDescription",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "graphql",
+									"graphql": {
+										"query": "query searchTodosByTitleOrDescription($input: TodoSearchInput!) {\n  searchTodosByTitleOrDescription(input: $input) {\n    __typename\n    id\n    title # The title of the todo\n    description # What the todo is all about\n    completed # Used to determine if a todo has been achieved or not\n    createdAt\n    updatedAt\n  }\n}",
+										"variables": "{\n  \"input\": {\n    \"title\": \"\",\n    \"description\": \"\"\n  }\n}"
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/graphql",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"graphql"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "cache-control",
+									"value": "no-store"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "283"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"11b-nZSb1jtmxrim36WP2P7TzqrNwTY\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 06 Aug 2023 07:36:57 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"errors\": [\n        {\n            \"extensions\": {\n                \"originalError\": {\n                    \"statusCode\": 400,\n                    \"message\": [\n                        \"Only alphanumeric characters and whitespaces are allowed\"\n                    ],\n                    \"error\": \"Bad Request\"\n                }\n            },\n            \"locations\": [\n                {\n                    \"line\": 2,\n                    \"column\": 3\n                }\n            ],\n            \"message\": \"Bad Request Exception\",\n            \"path\": [\n                \"searchTodosByTitleOrDescription\"\n            ]\n        }\n    ],\n    \"data\": null\n}"
+						}
+					]
+				}
+			],
+			"description": "This contains all the graphQL query endpoints"
+		},
+		{
+			"name": "Mutations",
+			"item": [
+				{
+					"name": "createTodo",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation createTodo($createTodoInput: CreateTodoInput!) {\n  createTodo(createTodoInput: $createTodoInput) {\n    __typename\n    id\n    title # The title of the todo\n    description # What the todo is all about\n    completed # Used to determine if a todo has been achieved or not\n    createdAt\n    updatedAt\n  }\n}",
+								"variables": "{\n  \"createTodoInput\": {\n    \"title\":\"hhrw\",\n    \"description\": \"Hsddi<>ddd\"\n\t}\n}"
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/graphql",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"graphql"
+							]
+						},
+						"description": "This endpoint facilitates the creation of todos.\n\n**Note:** **Authentication is required**\n\n## **Sample Usage**\n\n**Variables**\n\n``` json\n{\n  \"createTodoInput\": {\n    \"title\":\"hhrw\",\n    \"description\": \"Hsddi<>ddd\"\n  }\n}\n\n```\n\n**Sample Response**\n\n``` json\n{\n  \"data\": {\n    \"createTodo\": {\n      \"__typename\": \"Todo\",\n      \"id\": 9,\n      \"title\": \"hhrw\",\n      \"description\": \"Hsddi<>ddd\",\n      \"completed\": false,\n      \"createdAt\": \"2023-08-06T06:07:54.372Z\",\n      \"updatedAt\": \"2023-08-06T06:07:54.372Z\"\n    }\n  }\n}\n\n```\n\n**Sample Error Response (if todo title already exist)**\n\n``` json\n{\n  \"errors\": [\n    {\n      \"extensions\": {\n        \"originalError\": {\n          \"statusCode\": 409,\n          \"message\": \"A todo with that title already exists\",\n          \"error\": \"Conflict\"\n        }\n      },\n      \"locations\": [\n        {\n          \"line\": 2,\n          \"column\": 3\n        }\n      ],\n      \"message\": \"A todo with that title already exists\",\n      \"path\": [\n        \"createTodo\"\n      ]\n    }\n  ],\n  \"data\": null\n}\n\n```\n\n**Sample Error Response (If not authenticated)**\n\n``` json\n{\n  \"errors\": [\n    {\n      \"extensions\": {\n        \"originalError\": {\n          \"statusCode\": 401,\n          \"message\": \"Invalid token\",\n          \"error\": \"Unauthorized\"\n        }\n      },\n      \"locations\": [\n        {\n          \"line\": 2,\n          \"column\": 3\n        }\n      ],\n      \"message\": \"Invalid token\",\n      \"path\": [\n        \"deleteTodoById\"\n      ]\n    }\n  ],\n  \"data\": null\n}\n\n```"
+					},
+					"response": [
+						{
+							"name": "(SUCCESS) createTodo",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "graphql",
+									"graphql": {
+										"query": "mutation createTodo($createTodoInput: CreateTodoInput!) {\n  createTodo(createTodoInput: $createTodoInput) {\n    __typename\n    id\n    title # The title of the todo\n    description # What the todo is all about\n    completed # Used to determine if a todo has been achieved or not\n    createdAt\n    updatedAt\n  }\n}",
+										"variables": "{\n  \"createTodoInput\": {\n    \"title\":\"hhrw\",\n    \"description\": \"Hsddi<>ddd\"\n\t}\n}"
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/graphql",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"graphql"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "cache-control",
+									"value": "no-store"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "197"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"c5-gyCZBk48NEr37P1NxVOwYebb5SU\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 06 Aug 2023 07:46:24 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"createTodo\": {\n            \"__typename\": \"Todo\",\n            \"id\": 4,\n            \"title\": \"hhrw\",\n            \"description\": \"Hsddi&lt;&gt;ddd\",\n            \"completed\": false,\n            \"createdAt\": \"2023-08-06T07:46:24.462Z\",\n            \"updatedAt\": \"2023-08-06T07:46:24.462Z\"\n        }\n    }\n}"
+						},
+						{
+							"name": "(ERROR) createTodo",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "graphql",
+									"graphql": {
+										"query": "mutation createTodo($createTodoInput: CreateTodoInput!) {\n  createTodo(createTodoInput: $createTodoInput) {\n    __typename\n    id\n    title # The title of the todo\n    description # What the todo is all about\n    completed # Used to determine if a todo has been achieved or not\n    createdAt\n    updatedAt\n  }\n}",
+										"variables": "{\n  \"createTodoInput\": {\n    \"title\":\"hhrw\",\n    \"description\": \"Hsddi<>ddd\"\n\t}\n}"
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/graphql",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"graphql"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "cache-control",
+									"value": "no-store"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "254"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"fe-C9+oT8PkQ+OF8G/pIWURnDi45hw\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 06 Aug 2023 07:46:48 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"errors\": [\n        {\n            \"extensions\": {\n                \"originalError\": {\n                    \"statusCode\": 409,\n                    \"message\": \"A todo with that title already exists\",\n                    \"error\": \"Conflict\"\n                }\n            },\n            \"locations\": [\n                {\n                    \"line\": 2,\n                    \"column\": 3\n                }\n            ],\n            \"message\": \"A todo with that title already exists\",\n            \"path\": [\n                \"createTodo\"\n            ]\n        }\n    ],\n    \"data\": null\n}"
+						},
+						{
+							"name": "(ERROR) createTodo",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "graphql",
+									"graphql": {
+										"query": "mutation createTodo($createTodoInput: CreateTodoInput!) {\n  createTodo(createTodoInput: $createTodoInput) {\n    __typename\n    id\n    title # The title of the todo\n    description # What the todo is all about\n    completed # Used to determine if a todo has been achieved or not\n    createdAt\n    updatedAt\n  }\n}",
+										"variables": "{\n  \"createTodoInput\": {\n    \"title\":\"\",\n    \"description\": \"Hsddi<>ddd\"\n\t}\n}"
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/graphql",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"graphql"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "cache-control",
+									"value": "no-store"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "322"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"142-sz7Nz0AuwrL6lZzR6PJimwYHAmg\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 06 Aug 2023 08:01:45 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"errors\": [\n        {\n            \"extensions\": {\n                \"originalError\": {\n                    \"statusCode\": 400,\n                    \"message\": [\n                        \"Only alphanumeric characters and whitespaces are allowed for the Title field\",\n                        \"The title of the todo cannot be empty\"\n                    ],\n                    \"error\": \"Bad Request\"\n                }\n            },\n            \"locations\": [\n                {\n                    \"line\": 2,\n                    \"column\": 3\n                }\n            ],\n            \"message\": \"Bad Request Exception\",\n            \"path\": [\n                \"createTodo\"\n            ]\n        }\n    ],\n    \"data\": null\n}"
+						}
+					]
+				},
+				{
+					"name": "updateTodo",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation updateTodo($updateTodoInput: UpdateTodoInput!) {\n  updateTodo(updateTodoInput: $updateTodoInput) {\n    __typename\n    id\n    title # The title of the todo\n    description # What the todo is all about\n    completed # Used to determine if a todo has been achieved or not\n    createdAt\n    updatedAt\n  }\n}",
+								"variables": "{\n  \"updateTodoInput\": {\n    \"id\": 1,\n    \"title\": \"f\",\n    \"description\": \"Its about to go down\",\n    \"completed\": true,\n    \"updatedAt\": \"2019-12-03T09:54:33Z\"\n\t}\n}"
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/graphql",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"graphql"
+							]
+						},
+						"description": "This endpoint facilitates updating todos by ID.\n\n**Note:** **Authentication is required**\n\n## **Sample Usage**\n\n**Variables**\n\n``` json\n{\n  \"input\": {\n    \"id\": 1,\n    \"title\": \"f\",\n    \"description\": \"Its about cp\",\n    \"completed\": true,\n    \"updatedAt\": \"2023-08-06T09:54:33Z\"\n  }\n}\n\n ```\n\n**Sample Response**\n\n``` json\n{\n  \"data\": {\n    \"updateTodo\": {\n      \"__typename\": \"Todo\",\n      \"id\": 1,\n      \"title\": \"f\",\n      \"description\": \"Its about cp\",\n      \"completed\": true,\n      \"createdAt\": \"2021-09-21T20:16:50.000Z\",\n      \"updatedAt\": \"2019-12-03T09:54:33.000Z\"\n    }\n  }\n}\n\n ```\n\n**Sample Error Response (if id does not exist)**\n\n``` json\n{\n  \"errors\": [\n    {\n      \"extensions\": {\n        \"originalError\": {\n          \"statusCode\": 404,\n          \"message\": \"The todo with id: 100 cannot be updated because does not exist\",\n          \"error\": \"Not Found\"\n        }\n      },\n      \"locations\": [\n        {\n          \"line\": 2,\n          \"column\": 3\n        }\n      ],\n      \"message\": \"The todo with id: 100 cannot be updated because does not exist\",\n      \"path\": [\n        \"updateTodo\"\n      ]\n    }\n  ],\n  \"data\": null\n}\n\n ```\n\n**Sample Error Response (If not authenticated)**\n\n``` json\n{\n  \"errors\": [\n    {\n      \"extensions\": {\n        \"originalError\": {\n          \"statusCode\": 401,\n          \"message\": \"Invalid token\",\n          \"error\": \"Unauthorized\"\n        }\n      },\n      \"locations\": [\n        {\n          \"line\": 2,\n          \"column\": 3\n        }\n      ],\n      \"message\": \"Invalid token\",\n      \"path\": [\n        \"deleteTodoById\"\n      ]\n    }\n  ],\n  \"data\": null\n}\n\n ```"
+					},
+					"response": [
+						{
+							"name": "(SUCCESS) updateTodo",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "graphql",
+									"graphql": {
+										"query": "mutation updateTodo($updateTodoInput: UpdateTodoInput!) {\n  updateTodo(updateTodoInput: $updateTodoInput) {\n    __typename\n    id\n    title # The title of the todo\n    description # What the todo is all about\n    completed # Used to determine if a todo has been achieved or not\n    createdAt\n    updatedAt\n  }\n}",
+										"variables": "{\n  \"updateTodoInput\": {\n    \"id\": 1,\n    \"title\": \"f\",\n    \"description\": \"Its about to go down\",\n    \"completed\": true,\n    \"updatedAt\": \"2019-12-03T09:54:33Z\"\n\t}\n}"
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/graphql",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"graphql"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "cache-control",
+									"value": "no-store"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "197"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"c5-DHze1kqAZekBTmBu3iXQU1mRyZE\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 06 Aug 2023 07:52:06 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"updateTodo\": {\n            \"__typename\": \"Todo\",\n            \"id\": 1,\n            \"title\": \"f\",\n            \"description\": \"Its about to go down\",\n            \"completed\": true,\n            \"createdAt\": \"2023-08-05T15:16:50.000Z\",\n            \"updatedAt\": \"2019-12-03T09:54:33.000Z\"\n        }\n    }\n}"
+						},
+						{
+							"name": "(ERROR) updateTodo",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "graphql",
+									"graphql": {
+										"query": "mutation updateTodo($updateTodoInput: UpdateTodoInput!) {\n  updateTodo(updateTodoInput: $updateTodoInput) {\n    __typename\n    id\n    title # The title of the todo\n    description # What the todo is all about\n    completed # Used to determine if a todo has been achieved or not\n    createdAt\n    updatedAt\n  }\n}",
+										"variables": "{\n  \"updateTodoInput\": {\n    \"id\": 100,\n    \"title\": \"f\",\n    \"description\": \"Its about to go down\",\n    \"completed\": true,\n    \"updatedAt\": \"2019-12-03T09:54:33Z\"\n\t}\n}"
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/graphql",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"graphql"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "cache-control",
+									"value": "no-store"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "305"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"131-s9+kkTV3e2ZAuzki9FRr23zHNDU\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 06 Aug 2023 07:52:30 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"errors\": [\n        {\n            \"extensions\": {\n                \"originalError\": {\n                    \"statusCode\": 404,\n                    \"message\": \"The todo with id: 100 cannot be updated because does not exist\",\n                    \"error\": \"Not Found\"\n                }\n            },\n            \"locations\": [\n                {\n                    \"line\": 2,\n                    \"column\": 3\n                }\n            ],\n            \"message\": \"The todo with id: 100 cannot be updated because does not exist\",\n            \"path\": [\n                \"updateTodo\"\n            ]\n        }\n    ],\n    \"data\": null\n}"
+						},
+						{
+							"name": "(ERROR) updateTodo",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "graphql",
+									"graphql": {
+										"query": "mutation updateTodo($updateTodoInput: UpdateTodoInput!) {\n  updateTodo(updateTodoInput: $updateTodoInput) {\n    __typename\n    id\n    title # The title of the todo\n    description # What the todo is all about\n    completed # Used to determine if a todo has been achieved or not\n    createdAt\n    updatedAt\n  }\n}",
+										"variables": "{\n  \"updateTodoInput\": {\n    \"id\": 100,\n    \"title\": \"\",\n    \"description\": \"Its about to go down\",\n    \"completed\": true,\n    \"updatedAt\": \"2019-12-03T09:54:33Z\"\n\t}\n}"
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/graphql",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"graphql"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "cache-control",
+									"value": "no-store"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "262"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"106-8vOJWVU3W/SPVYQ4bhnEJhqowhA\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 06 Aug 2023 07:53:04 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"errors\": [\n        {\n            \"extensions\": {\n                \"originalError\": {\n                    \"statusCode\": 400,\n                    \"message\": [\n                        \"Only alphanumeric characters and whitespaces are allowed\"\n                    ],\n                    \"error\": \"Bad Request\"\n                }\n            },\n            \"locations\": [\n                {\n                    \"line\": 2,\n                    \"column\": 3\n                }\n            ],\n            \"message\": \"Bad Request Exception\",\n            \"path\": [\n                \"updateTodo\"\n            ]\n        }\n    ],\n    \"data\": null\n}"
+						}
+					]
+				},
+				{
+					"name": "deleteTodoById",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation deleteTodoById($id: Int!) {\n  deleteTodoById(id: $id) {\n    __typename\n    id\n    title # The title of the todo\n    description # What the todo is all about\n    completed # Used to determine if a todo has been achieved or not\n    createdAt\n    updatedAt\n  }\n}",
+								"variables": "{\n\t\"id\": 1\n}"
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/graphql",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"graphql"
+							]
+						},
+						"description": "This endpoint deletes the todo by ID.\n\n**Note:** **Authentication is required**\n\n## **Sample Usage**\n\n**Variables**\n\n``` json\n{\n  \"id\": 1\n}\n\n ```\n\n**Sample Response** (Returns the delete to info)\n\n``` json\n{\n  \"data\": {\n    \"updateTodo\": {\n      \"__typename\": \"Todo\",\n      \"id\": 1,\n      \"title\": \"f\",\n      \"description\": \"Its about cp\",\n      \"completed\": true,\n      \"createdAt\": \"2021-09-21T20:16:50.000Z\",\n      \"updatedAt\": \"2019-12-03T09:54:33.000Z\"\n    }\n  }\n}\n\n ```\n\n**Sample Error Response (if id does not exist)**\n\n``` json\n{\n  \"errors\": [\n    {\n      \"extensions\": {\n        \"originalError\": {\n          \"statusCode\": 404,\n          \"message\": \"The todo with id: 100 cannot be deleted because does not exist\",\n          \"error\": \"Not Found\"\n        }\n      },\n      \"locations\": [\n        {\n          \"line\": 2,\n          \"column\": 3\n        }\n      ],\n      \"message\": \"The todo with id: 100 cannot be deleted because does not exist\",\n      \"path\": [\n        \"deleteTodoById\"\n      ]\n    }\n  ],\n  \"data\": null\n}\n\n ```\n\n**Sample Error Response (If not authenticated)**\n\n``` json\n{\n  \"errors\": [\n    {\n      \"extensions\": {\n        \"originalError\": {\n          \"statusCode\": 401,\n          \"message\": \"Invalid token\",\n          \"error\": \"Unauthorized\"\n        }\n      },\n      \"locations\": [\n        {\n          \"line\": 2,\n          \"column\": 3\n        }\n      ],\n      \"message\": \"Invalid token\",\n      \"path\": [\n        \"deleteTodoById\"\n      ]\n    }\n  ],\n  \"data\": null\n}\n\n ```"
+					},
+					"response": [
+						{
+							"name": "(SUCCESS) deleteTodoById",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "graphql",
+									"graphql": {
+										"query": "mutation deleteTodoById($id: Int!) {\n  deleteTodoById(id: $id) {\n    __typename\n    id\n    title # The title of the todo\n    description # What the todo is all about\n    completed # Used to determine if a todo has been achieved or not\n    createdAt\n    updatedAt\n  }\n}",
+										"variables": "{\n\t\"id\": 1\n}"
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/graphql",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"graphql"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "cache-control",
+									"value": "no-store"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "201"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"c9-fGTaF+4NnH/toIBVVTscfLKh2hI\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 06 Aug 2023 08:03:44 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"deleteTodoById\": {\n            \"__typename\": \"Todo\",\n            \"id\": 1,\n            \"title\": \"f\",\n            \"description\": \"Its about to go down\",\n            \"completed\": true,\n            \"createdAt\": \"2023-08-05T15:16:50.000Z\",\n            \"updatedAt\": \"2019-12-03T09:54:33.000Z\"\n        }\n    }\n}"
+						},
+						{
+							"name": "(ERROR) deleteTodoById",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "graphql",
+									"graphql": {
+										"query": "mutation deleteTodoById($id: Int!) {\n  deleteTodoById(id: $id) {\n    __typename\n    id\n    title # The title of the todo\n    description # What the todo is all about\n    completed # Used to determine if a todo has been achieved or not\n    createdAt\n    updatedAt\n  }\n}",
+										"variables": "{\n\t\"id\": 100\n}"
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/graphql",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"graphql"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "cache-control",
+									"value": "no-store"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "309"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"135-UUaAMuJJOQphtF7uVmdWB9bcpPc\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 06 Aug 2023 08:04:12 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"errors\": [\n        {\n            \"extensions\": {\n                \"originalError\": {\n                    \"statusCode\": 404,\n                    \"message\": \"The todo with id: 100 cannot be deleted because does not exist\",\n                    \"error\": \"Not Found\"\n                }\n            },\n            \"locations\": [\n                {\n                    \"line\": 2,\n                    \"column\": 3\n                }\n            ],\n            \"message\": \"The todo with id: 100 cannot be deleted because does not exist\",\n            \"path\": [\n                \"deleteTodoById\"\n            ]\n        }\n    ],\n    \"data\": null\n}"
+						}
+					]
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{access_token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

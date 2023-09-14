@@ -1,0 +1,74 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Todo {
+  id: Float!
+
+  """The title of the todo"""
+  title: String!
+
+  """What the todo is all about"""
+  description: String
+
+  """Used to determine if a todo has been achieved or not"""
+  completed: Boolean
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type User {
+  id: Float!
+
+  """The email of the user"""
+  email: String!
+
+  """The password of the user"""
+  password: String!
+}
+
+type Query {
+  findAllTodoItems(cursor: Int, take: Int! = 5): [Todo!]!
+  findTodoById(id: Int!): Todo!
+  searchTodosByTitleOrDescription(input: TodoSearchInput!): [Todo]!
+  token(_email: String!, _password: String!): String!
+  findUserByEmail(_email: String!, _password: String!): User!
+}
+
+input TodoSearchInput {
+  title: String
+  description: String
+}
+
+type Mutation {
+  createTodo(createTodoInput: CreateTodoInput!): Todo!
+  updateTodo(updateTodoInput: UpdateTodoInput!): Todo!
+  deleteTodoById(id: Int!): Todo!
+}
+
+input CreateTodoInput {
+  """The title of the todo"""
+  title: String!
+
+  """What the todo is all about"""
+  description: String
+}
+
+input UpdateTodoInput {
+  id: Float!
+
+  """The title of the todo"""
+  title: String
+
+  """What the todo is all about"""
+  description: String
+
+  """Used to determine if a todo has been achieved or not."""
+  completed: Boolean
+  updatedAt: DateTime!
+}
